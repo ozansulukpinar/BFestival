@@ -1,0 +1,53 @@
+﻿@using BFest.Model
+@model List<Festival>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<br />
+@*Html.ActionLink("Add Comments", "Index", "Home", new { @class = "btn btn-danger" })*@
+
+<div>
+    <div style="width:300px;">
+        <table class="table">
+            @foreach (Season item in ViewBag.Seasons)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.SeasonName, "Index", new { seasonID = item.ID })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div @*class="col-md-8"*@>
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Festival Adı</th>
+                <th>Yaş Sınırı</th>
+                <th>Festival Başlangıç Tarihi</th>
+                <th>Festival Bitiş Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Festival item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.AgeLimit</td>
+                    <td>@item.StartDate.Day/@item.StartDate.Month/@item.StartDate.Year</td>
+                    <td>@item.EndDate.Date.Day/@item.EndDate.Month/@item.StartDate.Year</td>
+                    <td>@Html.ActionLink("Güncelle", "UpdateFestival", new { FestivalID = item.ID })</td>
+                    <td>@Html.ActionLink("Sil", "DeleteFestival", new { FestivalID = item.ID })</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>

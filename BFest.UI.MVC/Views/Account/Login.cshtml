@@ -1,0 +1,39 @@
+﻿@using BFest.Model
+@{
+    ViewBag.Title = "Login";
+}
+@model User
+
+
+
+
+<div class="single-welcome-slide bg-img bg-overlay jarallax" style="height:auto;background-image:url(img/bg-img/Festival.jpg);">
+
+    <img src="~/Assets/img/bg-img/Festival.jpg"/>
+
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <!-- Welcome Text -->
+            <div class="col-4">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
+                    <fieldset>
+                        <p>
+                            <label style="color:white;" class="mt-15">Email:</label>
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        </p>
+                        <p>
+                            <label style="color:white;">Şifre:</label>
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", type = "password" })
+                        </p>
+                        <p>
+                            <input type="submit" name="name" value="Giriş Yap" class="btn btn-success" />
+                            @Html.ActionLink("Kaydol", "Register", "Account", new { @class = "btn btn-success" })
+                            @Html.ActionLink("Şifremi Unuttum", "ForgotPassword", "Account", new { @class = "btn btn-success" })
+                        </p>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </div>
+</div>

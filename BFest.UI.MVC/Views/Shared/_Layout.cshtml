@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    @* css linkleri *@
+
+    <link href="~/Assets/style.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <!-- Header Area Start -->
+    <header class="header-area" style="background-color:black">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="conferNav">
+
+
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul id="nav">
+
+                                <li><a href="@Url.Action("Index","Home")">Anasayfa</a></li>
+
+                                <li><a href="@Url.Action("AboutUs","Home")">Hakkımızda</a></li>
+
+                                <li><a href="@Url.Action("Contact","Home")">İletişim</a></li>
+                            </ul>
+
+                            <!-- Get Tickets Button -->
+                            @if (Session["kullanici"]==null)
+                            {
+                                <a href="@Url.Action("Login", "Account")" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5" >Giriş Yap<i class="zmdi zmdi-long-arrow-right"></i></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("UserUpdateInformation", "Account")" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Profili Düzenle<i class="zmdi zmdi-long-arrow-right"></i></a>
+
+                                <a href="@Url.Action("Logout", "Account")" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Çıkış Yap<i class="zmdi zmdi-long-arrow-right"></i></a>
+                            }
+
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+
+    <div class="container-fluid body-content" style="padding:0px;">
+        @RenderBody()
+    </div>
+
+
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget Area -->
+                    @*<div class="col-12 col-sm-6 col-lg-3">
+                            <div class="single-footer-widget mb-60 wow fadeInUp" data-wow-delay="300ms">
+                                <!-- Footer Logo -->
+                                <a href="#" class="footer">
+                                    <h4 class="widget-title">BFest</h4>
+                                    <p>Festival</p>
+
+                                    <!-- Social Info -->
+                                    <div class="social-info">
+                                        <a href="#"><i class="zmdi zmdi-facebook"></i></a>
+                                        <a href="#"><i class="zmdi zmdi-instagram"></i></a>
+                                        <a href="#"><i class="zmdi zmdi-twitter"></i></a>
+                                        <a href="#"><i class="zmdi zmdi-linkedin"></i></a>
+                                    </div>
+                            </div>
+                        </div>*@
+
+                    <!-- Single Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-60 wow fadeInUp" data-wow-delay="300ms">
+                            <!-- Widget Title -->
+                            <h5 class="widget-title">İletişim</h5>
+
+                            <!-- Contact Area -->
+                            <div class="footer-contact-info">
+                                <p><i class="zmdi zmdi-map"></i> Zuhuratbaba Mah. İncirli Cad. No:57​, 34147 Bakırköy</p>
+                                <p><i class="zmdi zmdi-phone"></i> (226) 446 9371</p>
+                                <p><i class="zmdi zmdi-email"></i> kurumsalolmayanfestival@gmail.com</p>
+                                <p><i class="zmdi zmdi-globe"></i> www.bfest.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget mb-60 wow fadeInUp" data-wow-delay="300ms">
+
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-6">
+                        <div class="single-footer-widget mb-60 wow fadeInUp" data-wow-delay="300ms">
+                            <!-- Widget Title -->
+                            <h5 class="widget-title">Galeri</h5>
+
+                            <!-- Footer Gallery -->
+                            <div class="footer-gallery">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="~/Assets/img/bg-img/blog%20gird%20photo3%20600x395.jpg" style="height:100px;width:150px;" class="single-gallery-item"><img src="~/Assets/img/bg-img/blog%20gird%20photo3%20600x395.jpg" style="height:100px;width:150px;" alt=""></a>
+
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="~/Assets/img/bg-img/gallery%20photo2.jpg" style="height:100px;width:150px;" class="single-gallery-item"><img src="~/Assets/img/bg-img/gallery%20photo2.jpg" style="height:100px;width:150px;" alt=""></a>
+
+
+
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="~/Assets/img/bg-img/gallery%20photo3.jpeg" style="height:100px;width:150px;" class="single-gallery-item"><img src="~/Assets/img/bg-img/gallery%20photo3.jpeg" style="height:100px;width:150px;" alt=""></a>
+
+
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="~/Assets/img/bg-img/gallery%20photo4.jpg" style="height:100px;width:150px;" class="single-gallery-item"><img src="~/Assets/img/bg-img/gallery%20photo4.jpg" style="height:100px;width:150px;" alt=""></a>
+
+
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="~/Assets/img/bg-img/gallery%20photo6.jpg" style="height:100px;width:150px;" class="single-gallery-item"><img src="~/Assets/img/bg-img/gallery%20photo6.jpg" style="height:100px;width:150px;" alt=""></a>
+
+
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="~/Assets/img/bg-img/slider%20photo5%201920x1080.jpg" style="height:100px;width:150px;" class="single-gallery-item"><img src="~/Assets/img/bg-img/slider%20photo5%201920x1080.jpg" style="height:100px;width:150px;" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copywrite Area -->
+        <div class="container">
+            <div class="copywrite-content">
+                <div class="row">
+                    <!-- Copywrite Text -->
+                    <div class="col-12 col-md-6">
+                        <div class="copywrite-text">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a>BFest</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Footer Menu -->
+                    <div class="col-12 col-md-6">
+                        <div class="footer-menu">
+                            <ul class="nav">
+                                <li><a href="GizlilikPolitikası"><i class="zmdi zmdi-circle"></i> Gizlilik Politikası</a></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+    @* javascript kodlarının linkleri *@
+
+    <!-- **** All JS Files ***** -->
+    <!-- jQuery 2.2.4 -->
+    <script src="~/Assets/js/jquery.min.js"></script>
+    <!-- Popper -->
+    <script src="~/Assets/js/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <!-- All Plugins -->
+    <script src="~/Assets/js/confer.bundle.js"></script>
+    <!-- Active -->
+    <script src="~/Assets/js/default-assets/active.js"></script>
+    <script src="~/Assets/js/default-assets/active.js"></script>
+    @RenderSection("script", false)
+</body>
+</html>
+    

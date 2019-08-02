@@ -1,0 +1,74 @@
+﻿@using BFest.Model
+@{
+    ViewBag.Title = "AddFestival";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@model Festival
+
+
+<link href="~/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<center>
+
+
+
+    <body>
+
+
+
+        <h2>Festival Ekle</h2>
+        <div class="container">
+            @using (Html.BeginForm())
+            {
+
+
+                <table class="table table-striped">
+                    <tr>
+
+                        <th style="width:200px;font-size:x-large">Festival Adı</th>
+                        @*@Html.TextBoxFor(m => m., new { @type = "hidden" })*@
+                        <td>@Html.TextBoxFor(m => m.Name, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Festival Açıklaması</th>
+                        <td>@Html.TextAreaFor(m => m.Description, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Sezon</th>
+                        <td>
+                            @*@Html.DropDownList("Seasons", ViewBag.Seasons as SelectList, "Sezon seçiniz...")*@
+                            @Html.DropDownListFor(m => m.SeasonID, ViewBag.Seasons as SelectList, "Sezon seçiniz...", new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Başlangıç Tarihi</th>
+                        <td>@Html.TextBoxFor(m => m.StartDate, new { @class = "form-control", type = "date", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Bitiş Tarihi</th>
+                        <td width="200px">@Html.TextBoxFor(m => m.EndDate, new { @class = "form-control", type = "date", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Fotoğraf</th>
+                        <td width="200px">@Html.TextBoxFor(m => m.Photo, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Yaş Sınırı</th>
+                        <td>@Html.TextBoxFor(m => m.AgeLimit, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <td style="width:200px;font-size:x-large;text-align:justify"><button type="submit" style="background-color:grey">Ekle</button></td>
+                    </tr>
+                </table>
+            }
+        </div>
+
+
+
+        <script src="~/Bootstrap/js/bootstrap.min.js"></script>
+
+    </body>
+</center>
+
+
+

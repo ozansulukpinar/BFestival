@@ -1,0 +1,57 @@
+﻿@using BFest.Model
+@model Festival
+
+<input type="hidden" id="FestID" value="@Model.ID" />
+<!-- Comment Area -->
+<div class="comment-area mb-80">
+    <!-- Comments Area -->
+    <div class="comment_area clearfix">
+        <h4 class="mb-30">Yorumlar</h4>
+
+        <ol>
+            @foreach (Evaluation item in Model.Evaluations)
+            {
+                                <!-- Single Comment Area -->
+                <li class="single_comment_area">
+                    <!-- Comment Content -->
+                    <div class="comment-content d-flex">
+                        <!-- Comment Author -->
+                        <div class="comment-author">
+
+                            <img src="~/Assets/img/60-256.png" />
+                        </div>
+                        <!-- Comment Meta -->
+                        <div class="comment-meta">
+                            <div class="comment-meta-data">
+                                @item.User.Name - @item.Date
+
+                            </div>
+                            <div>
+                                <p>@item.Comment</p>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </li>
+            }
+        </ol>
+
+    </div>
+</div>
+
+@if (Session["kullanici"] != null)
+{
+    <div class="form-group">
+        <textarea id="commentmessage" class="form-control mb-10" rows="5" name="message" placeholder="Message" onfocus="this.placeholder" onblur="this.placeholder='Yorum Yapınız'" required=""></textarea>
+    </div>
+        <input type="button" onclick="PostComment2()" class="btn btn-warning" value="Post Comment" />
+}
+</div>
+
+
+
+
+

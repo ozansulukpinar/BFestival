@@ -1,0 +1,424 @@
+﻿@using BFest.Model
+@model List<Festival>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- About Us And Countdown Area Start -->
+<section class="about-us-countdown-area section-padding-30-0" id="about">
+    <div class="container">
+        <div class="row align-items-center">
+
+
+            <!-- About Thumb -->
+            <div class="col-12 col-md-6">
+                <div class="about-thumb mb-80 wow fadeInUp" data-wow-delay="300ms">
+                    <img src="img/bg-img/2.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Counter Up Area -->
+    <div class="countdown-up-area" style="height:130px;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-3">
+                    <!-- Countdown Text -->
+                    <div class="countdown-content-text mb-100 wow fadeInUp" data-wow-delay="300ms">
+                        <h6 style="text-align:center">En Yakın Festival</h6>
+                        <h4 style="text-align:center">Bozcaada Caz Festivali</h4>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-9">
+                    <div class="countdown-timer mb-100 wow fadeInUp" data-wow-delay="300ms">
+                        <div id="clock"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Welcome Area Start -->
+<section class="welcome-area">
+
+    <!-- Single Slide -->
+    <div class="single-welcome-slide bg-img bg-overlay jarallax" style="height:auto;background-image:url(img/bg-img/Festival.jpg);">
+
+        <img src="~/Assets/img/bg-img/Festival.jpg" />
+
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <!-- Welcome Text -->
+                <div class="col-12">
+                    <div class="welcome-text text-right">
+                        <h2 data-animation="fadeInUp" data-delay="300ms">Science <br>Conference</h2>
+                        <h6 data-animation="fadeInUp" data-delay="500ms">Shangri-La Hotel, Bangkok, Bangkok, Thailand</h6>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- Our Speakings Area Start -->
+<section class="our-speaker-area bg-img bg-gradient-overlay section-padding-100-60" style="background-image: url(img/bg-img/3.jpg);">
+    <div class="container">
+        <div class="row">
+            <!-- Heading -->
+            <div class="col-12">
+                <div class="section-heading text-center wow fadeInUp" data-wow-delay="300ms">
+                    <h4 class="font">Festivaller</h4>
+                    <div>
+                        <i class="fal fa-glass-cheers"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Single Speaker Area -->
+            @foreach (Festival item in Model)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="single-speaker-area bg-gradient-overlay-2 wow fadeInUp" data-wow-delay="300ms">
+                        <!-- Thumb -->
+                        <div class="speaker-single-thumb">
+
+
+                            <img src="~/Assets/img/bg-img/whitefest.jpg" />
+
+                        </div>
+                        <!-- Social Info -->
+                        <div class="social-info">
+                            <a href="@Url.Action("FestivalDetail", "Account", new {festivalID=item.ID })">
+                                <img src="~/Assets/img/60-256.png" style="width:25px; height:25px;" />
+                            </a>
+
+                        </div>
+                        <!-- Info -->
+                        <div class="speaker-info">
+                            <h5>@item.Name</h5>
+
+                        </div>h
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<!-- Our Schedule Area Start -->
+<section class="our-schedule-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <!-- Heading -->
+            <div class="col-12">
+                <div class="section-heading-2 text-center wow fadeInUp" data-wow-delay="300ms">
+
+                    <h4>Hemen Planını Yap</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="schedule-tab">
+                    <ul class="nav nav-tabs wow fadeInUp" data-wow-delay="300ms" id="conferScheduleTab" role="tablist">
+                        @{ Festival SeasonIdForActive = Model.FirstOrDefault();}
+                        @foreach (Season item in ViewBag.Seasons)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @if (item.ID == SeasonIdForActive.SeasonID)
+                                {
+                                    @Html.Raw("active")
+                                }" id="@item.SeasonName" href="@Url.Action("Index","Home", new { seasonID = @item.ID })" role="tab" aria-controls="step-one" aria-expanded="true">@item.SeasonName<br></a>
+            </li>
+                        }
+                    </ul>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="conferScheduleTabContent">
+                    <div class="tab-pane fade show active" id="step-one" role="tabpanel" aria-labelledby="autumun-tab">
+                        <!-- Single Tab Content -->
+                        <div class="single-tab-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Single Schedule Area -->
+
+                                    @foreach (Festival item in Model)
+                                    {
+                                        <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                            <!-- Single Schedule Thumb and Info -->
+                                            <div class="single-schedule-tumb-info d-flex align-items-center">
+
+                                                <div class="single-schedule-info">
+                                                    <h6>@item.Name</h6>
+
+                                                </div>
+                                            </div>
+                                            <!-- Single Schedule Info -->
+                                            <div class="schedule-time-place">
+                                                <p><i class="zmdi zmdi-time"></i>@item.StartDate.ToShortDateString()</p>
+                                                <p><i class="zmdi zmdi-map"></i>@item.EndDate.ToShortDateString()</p>
+                                            </div>
+                                            <!-- Schedule Btn -->
+                                            <a href="@Url.Action("FestivalDetail", "Account", new {festivalID=item.ID })" class="btn confer-btn">Detay<i class="zmdi zmdi-long-arrow-right"></i></a>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="step-two" role="tabpanel" aria-labelledby="winter-tab">
+                        <!-- Single Tab Content -->
+                        <div class="single-tab-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+
+                                            <div class="single-schedule-info">
+                                                <h6>Cappadox</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 11-13 Aralık 2019</p>
+                                            <p><i class="zmdi zmdi-map"></i> Kapadokya</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl<i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+
+                                            <div class="single-schedule-info">
+                                                <h6>WhiteFest</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 12 Ocak 2020</p>
+                                            <p><i class="zmdi zmdi-map"></i> Uludağ</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+
+                                            <div class="single-schedule-info">
+                                                <h6>Bilyoner WinterFest</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 30 Ocak-2 Şubat 2020</p>
+                                            <p><i class="zmdi zmdi-map"></i> Uludağ</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="step-three" role="tabpanel" aria-labelledby="spring-tab">
+                        <!-- Single Tab Content -->
+                        <div class="single-tab-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+
+                                            <div class="single-schedule-info">
+                                                <h6>Sonar</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 8-9 Mart 2020</p>
+                                            <p><i class="zmdi zmdi-map"></i> İstanbul</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+                                            <!-- Single Schedule Thumb -->
+
+                                            <div class="single-schedule-info">
+                                                <h6>Portakal Çiçeği</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 3-7 Nisan 2020</p>
+                                            <p><i class="zmdi zmdi-map"></i> Adana</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+
+
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+                                            <!-- Single Schedule Thumb -->
+
+                                            <div class="single-schedule-info">
+                                                <h6>Floral Fest</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 19-21 Nisan 2020</p>
+                                            <p><i class="zmdi zmdi-map"></i> İstanbul</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="step-four" role="tabpanel" aria-labelledby="summer-tab">
+                        <!-- Single Tab Content -->
+                        <div class="single-tab-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+
+                                            <div class="single-schedule-info">
+                                                <h6>Bozcaada Caz Festivali</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 19-21 Temmuz 2019</p>
+                                            <p><i class="zmdi zmdi-map"></i> Bozcaada</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+                                            <!-- Single Schedule Thumb -->
+
+                                            <div class="single-schedule-info">
+                                                <h6>İstanbul Çikolata Festivali</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 1-3 Ağustos</p>
+                                            <p><i class="zmdi zmdi-map"></i> İstanbul</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+
+
+
+
+                                    <!-- Single Schedule Area -->
+                                    <div class="single-schedule-area d-flex flex-wrap justify-content-between align-items-center wow fadeInUp" data-wow-delay="300ms">
+                                        <!-- Single Schedule Thumb and Info -->
+                                        <div class="single-schedule-tumb-info d-flex align-items-center">
+                                            <!-- Single Schedule Thumb -->
+
+                                            <div class="single-schedule-info">
+                                                <h6>Electronica Festivali</h6>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Schedule Info -->
+                                        <div class="schedule-time-place">
+                                            <p><i class="zmdi zmdi-time"></i> 12-13 Ağustos</p>
+                                            <p><i class="zmdi zmdi-map"></i> Kuşadası</p>
+                                        </div>
+                                        <!-- Schedule Btn -->
+                                        <a href="#" class="btn confer-btn">Katıl <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Our Schedule Area End -->
+<!-- Scroll Icon -->
+<div class="icon-scroll" id="scrollDown"></div>
+<script src="~/Assets/js/jquery.min.js"></script>
+<!-- Popper -->
+<script src="~/Assets/js/popper.min.js"></script>
+<!-- Bootstrap -->
+<script src="~/Assets/js/bootstrap.min.js"></script>
+<!-- All Plugins -->
+<script src="~/Assets/js/confer.bundle.js"></script>
+<!-- Active -->
+<script src="~/Assets/js/default-assets/active.js"></script>
+<script src="~/Assets/js/default-assets/active.js"></script>
+
+<!-- Welcome Area End -->
+<!-- About Us And Countdown Area End -->

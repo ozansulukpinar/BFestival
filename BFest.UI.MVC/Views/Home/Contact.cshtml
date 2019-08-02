@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contact</h2>
+
+<!-- Header Area End -->
+@*<!-- Breadcrumb Area Start -->
+    <section class="breadcrumb-area bg-img bg-gradient-overlay jarallax" style="background-image:url(Assets/img/bg-img/Isle-of-Wight-Festival-baby-ear-defenders.jpg);">
+
+
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="page-title">Contact</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Area End -->*@
+<!-- Contact Us Area Start -->
+<section class="contact--us-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Us Thumb -->
+            <div class="col-12 col-lg-6">
+                <div class="contact-us-thumb mb-100">
+                    <img src="~/Assets/img/bg-img/Isle-of-Wight-Festival-baby-ear-defenders.jpg" />
+
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-12 col-lg-6">
+                <div class="contact_from_area mb-100 clearfix">
+                    <!-- Contact Heading -->
+                    <div class="contact-heading">
+                        <h4>Hadi Bizimle İletişime Geç</h4>
+                        <p>Tavsiyelerini dinlemek,şikayetlerine çözüm bulmak istiyoruz.</p>
+                    </div>
+                    <div class="contact_form">
+                        <form action="mail.php" method="post">
+                            <div class="contact_input_area">
+                                <div class="row">
+                                    <!-- Form Group -->
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control mb-30" name="name" id="name" placeholder="İsim" required>
+                                        </div>
+                                    </div>
+                                    <!-- Form Group -->
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control mb-30" name="name" id="name-2" placeholder="Soyisim" required>
+                                        </div>
+                                    </div>
+                                    <!-- Form Group -->
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control mb-30" name="email" id="email" placeholder="E-mail" required>
+                                        </div>
+                                    </div>
+                                    <!-- Form Group -->
+                                    <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control mb-30" name="subject" id="subject" placeholder="Numara">
+                                        </div>
+                                    </div>
+                                    <!-- Form Group -->
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea name="message" class="form-control mb-30" id="message" cols="30" rows="6" placeholder="Mesajın" required></textarea>
+                                        </div>
+                                    </div>
+                                    <!-- Button -->
+                                    <div class="col-12">
+                                        <button type="submit" class="btn confer-btn">Yolla<i class="zmdi zmdi-long-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Us Area End -->
+<!-- Map Area -->
+<div class="map-area">
+    <div class="mapouter">
+        <div class="gmap_canvas"><iframe width="552" height="404" id="gmap_canvas" src="https://maps.google.com/maps?q=Zuhuratbaba%20Mah.%20%C4%B0ncirli%20Cad.%20No%3A57%E2%80%8B%2C%2034147%20Bak%C4%B1rk%C3%B6y&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.pureblack.de/beste-wordpress-themes/">https://www.pureblack.de/beste-wordpress-themes/</a></div>
+        <style>
+            .mapouter {
+                position: relative;
+                text-align: right;
+                height: 500px;
+                width: 1350px;
+            }
+
+            .gmap_canvas {
+                overflow: hidden;
+                background: none !important;
+                height: 500px;
+                width: 1350px;
+            }
+        </style>
+    </div>
+
+</div>

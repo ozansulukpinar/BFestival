@@ -1,0 +1,48 @@
+﻿@using BFest.Model;
+@model User
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<link href="~/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<center>
+    <body>
+
+        <div class="container text-center">
+            @using (Html.BeginForm())
+            {
+                <table class="table table-striped">
+                    <tr>
+
+                        <th style="width:200px;font-size:x-large">Ad</th>
+                        @Html.TextBoxFor(m => m.ID, new { @type = "hidden" })
+                        <td>@Html.TextBoxFor(m => m.Name, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Soyad</th>
+                        <td>@Html.TextBoxFor(m => m.Surname, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Email</th>
+                        <td>@Html.TextBoxFor(m => m.Email, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Telefon</th>
+                        <td>@Html.TextBoxFor(m => m.Phone, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;font-size:x-large">Yetki</th>
+                        <td>@Html.CheckBoxFor(m => m.Authority, new { @class = "form-control", style = "width:200px;height:50px;font-size:large" })</td>
+                    </tr>
+                    <tr>
+                        <td style="width:200px;font-size:x-large;text-align:justify"><button type="submit" style="background-color:gray">Güncelle</button></td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <script src="~/Bootstrap/js/bootstrap.min.js"></script>
+    </body>
+
+</center>

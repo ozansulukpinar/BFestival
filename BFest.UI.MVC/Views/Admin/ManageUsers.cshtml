@@ -1,0 +1,28 @@
+﻿@using BFest.Model
+@model List<User>
+@{
+    ViewBag.Title = "ManageUsers";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Kullanıcı Bilgileri</h2>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Kullanıcı Ad Soyad</th>
+                <th>Email Adresi</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Name @item.Surname</td>
+                <td>@item.Email</td>
+                <td>@Html.ActionLink("Güncelle", "Update", new { UserID = item.ID })</td>
+                <td>@Html.ActionLink("Sil", "Delete", new { UserID = item.ID })</td>
+            </tr>
+        }
+    </table>
+</div>
